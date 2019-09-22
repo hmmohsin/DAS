@@ -1,0 +1,4 @@
+nnIPAddr 10.1.1.12
+nnPort 54310
+hdfsPath /data
+metaFile metadata.txt 

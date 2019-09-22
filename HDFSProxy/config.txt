@@ -1,0 +1,5 @@
+lport 8080
+ipAddr 10.1.1.2
+nnIPAddr 10.1.1.12
+nnPort 54310
+HDFSDataDir /data
