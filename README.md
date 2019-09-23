@@ -8,7 +8,7 @@ To simplify DAS setup on Emulab, we have created a 12 node Hadoop setup profile 
 4- Use ssh command information and your favourit ssh client to login to node with ID *C-1*\
 5- clone DAS code *git clone https://github.com/hmmohsin/DAS.git* under your emulab home directory (e.g. /users/peter/)\
 6- *cd DAS* and *make*\
-7- *cd run && ./run.sh* This script will setup hadoop cluster, generate dummy data and upload that data into hdfs cluster. This step will take upto 20 minutes, make sure not to interrupt the process. \
+7- *cd run && ./run.sh* This script will setup hadoop cluster, generate dummy data files and upload that data into hdfs cluster. With defualt settings the script will generate 10000 files of 10MB each. This step will take upto 30 minutes. To change the number of files change **fileCount=10000** to desired number in **run/run.sh**\.
 8- *cd ../METADATA && python gen_metaFile.py hdfs* This will fetch files metadata from HDFS namenode to local node, bypassing the need to contact namenode for each get request.
 
 ### Configuration

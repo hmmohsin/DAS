@@ -1,8 +1,10 @@
 #! /bin/bash
 
 path=$1"/scripts"
+fileCount=$2
+echo "fileCount="
+echo $fileCount
 count=0
-fileCount=10000
 count=$(ls -la /mnt/extra/data | grep -c "F")
 
 if [ "$count" -ge "$fileCount" ]

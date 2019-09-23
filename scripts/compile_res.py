@@ -33,21 +33,21 @@ def get_filesize(oid):
 
 def get_scheme_name(scheme_id):
 	if (scheme_id == 0):
-		return "BASE"
+		return "Single-Copy"
 	elif (scheme_id == 1):
-		return "DUP"
+		return "Cloning"
 	elif (scheme_id == 2):
-		return "PRIO"
+		return "Cloning-Prio"
 	elif (scheme_id == 3):
-		return "PURGE"
+		return "DAS"
 	elif (scheme_id == 4):
-		return "DAS_Agg"
+		return "DAS-Agg"
 	elif (scheme_id == 5):
-		return "HEDGED_REQ"
+		return "HEDGED"
 	elif (scheme_id == 7):
-		return "APPTO"
+		return "AppTO"
 	elif (scheme_id == 9):
-		return "TIED"
+		return "Tied"
 	else:
 		print "Invalid Scheme"
 		exit(0)

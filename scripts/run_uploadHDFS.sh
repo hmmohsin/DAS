@@ -1,6 +1,6 @@
 #! /bin/bash
 
-fileCount=10000
+fileCount=$1
 count=$(hadoop fs -ls /data/ | grep -c "F")
 if [[ $count -ge $fileCount ]]
 then

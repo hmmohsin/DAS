@@ -9,7 +9,6 @@ serversList = {}
 def getConfig():
 	fh = open("gen_meta_config.txt","r")
 	for sTuple in fh:
-		print sTuple
 		key, value = sTuple.rstrip().split(' ')
 		config[key] = value
 	fh.close()
@@ -17,7 +16,6 @@ def getConfig():
 def getServersList():
 	fh = open("../CONFIG/servers.list", "r")
 	for sTuple in fh:
-		print sTuple
 		sid, sIP, priPort, secPort = sTuple.rstrip('\n').split(' ')
 		serversList[sid] = sIP
 	fh.close()
@@ -67,7 +65,6 @@ if __name__ == "__main__":
 	mode = sys.argv[1]
 	if mode == "hdfs":
 		getConfig()
-		print config
 		nnIPAddr = config['nnIPAddr']
 		nnPort = config['nnPort']
 		hdfsPath = config['hdfsPath']

@@ -26,21 +26,21 @@ struct server get_server_info (int id)
 void get_scheme_name(int scheme, char *scheme_name)
 {
 	if (scheme == 0)
-		strcpy(scheme_name,"BASE");
+		strcpy(scheme_name,"Single-Copy");
 	else if (scheme == 1)
-		strcpy(scheme_name,"DUP");
+		strcpy(scheme_name,"Cloning");
 	else if (scheme == 2)
-		strcpy(scheme_name,"PRIO");
+		strcpy(scheme_name,"Cloning-Prio");
 	else if (scheme == 3)
-		strcpy(scheme_name,"PURGE");
+		strcpy(scheme_name,"DAS");
 	else if (scheme == 4)
-		strcpy(scheme_name, "BYTE_AGG");
+		strcpy(scheme_name, "DAS-AGG");
 	else if (scheme == 5)
-		strcpy(scheme_name, "HEDGED_REQ");
+		strcpy(scheme_name, "HEDGED");
         else if (scheme == 7)
-                strcpy(scheme_name, "APPTO");
+                strcpy(scheme_name, "AppTO");
         else if (scheme == 9)
-                strcpy(scheme_name, "TIED");
+                strcpy(scheme_name, "Tied");
 
 }
 void flush_data_struct(struct job *job_store, int j_count)
