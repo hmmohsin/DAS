@@ -16,15 +16,20 @@ CLIENT_OBJS = $(patsubst %,$(CLIENT_DIR)/%,$(_CLIENT_OBJS))
 #$(info $$CLIENT_DIR is [${CLIENT_DIR}])
 #$(info $$SERVER_DIR is [${SERVER_DIR}])
 
-all: $(TARGETS)
+all: move $(TARGETS)
+
+move: 
+	mkdir -p $(BIN_DIR)
 
 server: $(SERVER_OBJS)
 	$(CC) $(SERVER_OBJS) -o server $(LDFLAGS)
 	mv server $(BIN_DIR)
+	rm -rf $(SERVER_DIR)/*.o
 
 client: $(CLIENT_OBJS)
 	$(CC) $(CLIENT_OBJS) -o client $(LDFLAGS)
 	mv client $(BIN_DIR)
+	rm -rf $(CLIENT_DIR)/*.o
 
 %.o: $(SERVER_DIR)/%.c
 	$(CC) $(CFLAGS) $^ -o $@

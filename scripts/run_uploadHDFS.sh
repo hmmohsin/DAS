@@ -10,7 +10,7 @@ then
 	exit 0
 fi
 hadoop fs -mkdir /data
-nohup hadoop fs -put /mnt/data/F* /data &
+nohup hadoop fs -put /mnt/extra/data/F* /data &
 while [[ $count -lt $fileCount ]]; do
 	sleep 5
         count=$(hadoop fs -ls /data | grep -c "F")

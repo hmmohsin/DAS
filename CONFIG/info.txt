@@ -1,2 +1,0 @@
-high_th = 2.8 sec
-low_th = 0.3 sec
