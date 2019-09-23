@@ -9,8 +9,8 @@ To simplify DAS setup on Emulab, we have created a 12 node Hadoop setup profile 
 5- clone DAS code *git clone https://github.com/hmmohsin/DAS.git*\
 6- *cd DAS* and *make*\
 7- *cd run && ./run.sh* This script will setup hadoop cluster, generate dummy data and upload that data into hdfs cluster. This step will take upto 20 minutes, make sure not to interrupt the process. \
-8- *cd ../METADATA && python gen_metaFile.py hdfs* This will fetch hdfs metadata to local node, bypassing the need to contact namenode for each get request. \
-------------
+8- *cd ../METADATA && python gen_metaFile.py hdfs* This will fetch hdfs metadata to local node, bypassing the need to contact namenode for each get request.
+
 ### Configuration
 To evaluate different duplication schemes under different settings, *CONFIG* directory contains *exp.conf* file which provides various configuration parameters. Most of these parameters take an integer input. The following config are some of the parameters supported to cover a range of experiments:\
 
