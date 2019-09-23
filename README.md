@@ -1,19 +1,18 @@
 This repository contain DAS codebase for storage experiment. For emulab experiment, a public profile is setup which can be accessed using a valid emulab account. 
 
 ## Emulab Setup
-To simplify DAS setup on Emulab, we have created a 12 node Hadoop setup profile which contains all the required packages. Following are the steps to get the emulab setup.
-
-1- Login to your [emulab account](https://www.emulab.net).
-2- Instantiate [experiment profile](https://www.emulab.net/portal/instantiate.php?profile=Hadoop-Single-New&project=TuftsCC&version=7) by choosing **next**, **next**, and then **finish**. The swap-in will take few seconds.
-3- Once the experiment is ready, click on the *List View*. This will show the list of nodes provisioned for this experiment. 
-4- Use ssh command information and your favourit ssh client to login to node with ID *C-1*
-5- clone DAS code *git clone https://github.com/hmmohsin/DAS.git*
-6- *cd DAS* and *make*
-7- *cd run && ./run.sh* This script will setup hadoop cluster, generate dummy data and upload that data into hdfs cluster. This step will take upto 20 minutes, make sure not to interrupt the process. 
-8- *cd ../METADATA && python gen_metaFile.py hdfs* This will fetch hdfs metadata to local node, bypassing the need to contact namenode for each get request. 
+To simplify DAS setup on Emulab, we have created a 12 node Hadoop setup profile which contains all the required packages. Following are the steps to get the emulab setup.\
+1- Login to your [emulab account](https://www.emulab.net).\
+2- Instantiate [experiment profile](https://www.emulab.net/portal/instantiate.php?profile=Hadoop-Single-New&project=TuftsCC&version=7) by choosing **next**, **next**, and then **finish**. The swap-in will take few seconds.\
+3- Once the experiment is ready, click on the *List View*. This will show the list of nodes provisioned for this experiment. \
+4- Use ssh command information and your favourit ssh client to login to node with ID *C-1*\
+5- clone DAS code *git clone https://github.com/hmmohsin/DAS.git*\
+6- *cd DAS* and *make*\
+7- *cd run && ./run.sh* This script will setup hadoop cluster, generate dummy data and upload that data into hdfs cluster. This step will take upto 20 minutes, make sure not to interrupt the process. \
+8- *cd ../METADATA && python gen_metaFile.py hdfs* This will fetch hdfs metadata to local node, bypassing the need to contact namenode for each get request. \
 ------------
 ### Configuration
-To evaluate different duplication schemes under different settings, *CONFIG* directory contains *exp.conf* file which provides various configuration parameters. Most of these parameters take an integer input. The following config are some of the parameters supported to cover a range of experiments:
+To evaluate different duplication schemes under different settings, *CONFIG* directory contains *exp.conf* file which provides various configuration parameters. Most of these parameters take an integer input. The following config are some of the parameters supported to cover a range of experiments:\
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dn_count:[number of datanodes]
 
