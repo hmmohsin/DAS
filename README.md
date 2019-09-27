@@ -6,10 +6,11 @@ To simplify DAS setup on Emulab, we have created a 12 node Hadoop setup profile 
 2- Instantiate [experiment profile](https://www.emulab.net/portal/instantiate.php?profile=Hadoop-Single-New&project=TuftsCC&version=7) by choosing **next**, **next**, and then **finish**. The swap-in will take few seconds.\
 3- Once the experiment is ready, click on the *List View*. This will show the list of nodes provisioned for this experiment. \
 4- Use ssh command information and your favourit ssh client to login to node with ID *C-1*\
-5- clone DAS code *git clone https://github.com/hmmohsin/DAS.git* under your emulab home directory (e.g. /users/peter/)\
-6- *cd DAS* and *make*\
-7- *cd run && ./run.sh* This script will setup hadoop cluster, generate dummy data files and upload that data into hdfs cluster. With defualt settings the script will generate 10000 files of 10MB each. This step will take upto 30 minutes. To change the number of files change **fileCount=10000** to desired number in **run/run.sh**\.
-8- *cd ../METADATA && python gen_metaFile.py hdfs* This will fetch files metadata from HDFS namenode to local node, bypassing the need to contact namenode for each get request.
+5- Change user to root *sudo su root*
+6- clone DAS code *git clone https://github.com/hmmohsin/DAS.git* under your emulab home directory (e.g. /users/peter/)\
+7- *cd DAS* and *make*\
+8- *cd run && ./run.sh* This script will setup hadoop cluster, generate dummy data files and upload that data into hdfs cluster. With defualt settings the script will generate 10000 files of 10MB each. This step will take upto 30 minutes. To change the number of files change **fileCount=10000** to desired number in **run/run.sh**\.
+9- *cd ../METADATA && python gen_metaFile.py hdfs* This will fetch files metadata from HDFS namenode to local node, bypassing the need to contact namenode for each get request.
 
 ### Configuration
 To evaluate different duplication schemes under different settings, *CONFIG* directory contains *exp.conf* file which provides various configuration parameters. Most of these parameters take an integer input. The following config are some of the parameters supported to cover a range of experiments:\
@@ -51,3 +52,20 @@ change current directory to bin and run the client. client takes client ID as in
 
 ------
 ## Compiling Results
+RESULTS/RES Directory contains all the result files for each run of every experiment. The filenames are structured based on exp.conf file as *eid_scheme_pLoad_run_cli_client-id*. For example from the sample config file, the DAS result filename will be *default_test_DAS_10_0_cli-1*.\
+\
+The structure of result file is as follow(Pri is Primary, Sec is Secondary):\
+*job-id tasksPerJob |taskID objectID priReplicaID_SecReplicaID objectSizeFetchedFromPri_objectSizeFetchedFromSec RCTPri_RCTSec qLenBeforeDispPri-QlenBeforeDispSec*\
+\
+To get results summary you can use compile_res.py script in *scripts* dir. *cd ../scripts && python compile_res.py* This will update *RESULTS/summary.txt*. The summary.txt file is structured as follow:\
+*Scheme RCT-std RCT-mean RCT-median RCT-p90 RCT-p95 RCT-p99 RCT-P99.9 RCT-Max*\
+In our paper we have only reported p99 for our main experiment.
+
+## Caveats and Debugging
+The emulab experiment profile (set-up for this experiment) assumes specific type of machine (d430), however 12xd430 may not be available at any time. We strongly recommend either *d430* or *d710* type machines for servers (s1-s9) and only *d430* for clients (c1-c2). To change the machine type edit the profile *(edit->edit topology)*, client on node, click on *hardware type*, and choose machine type from drop down list. With other types of machines you should be able to run the experiment but it may lead to different results.\
+\
+During your emulab setup phase, do not stop or kill the script. If somehoe you end up stopping the script before it finishes, clean it up and re-run it from start. To clean up use *./run-cleanup.sh* from *scripts* directory.
+\
+To validate that hadoop is setup properly and the data files have been uploaded to cluster, you can use *hadoop fs -ls /data | grep -c "F"*. This will show you the number of files uploaded into cluster under /data directory.\
+\
+Each dataonde runs two process to run hdfs proxy: *hdfs* and *server*. You can check if both these process are running on each datanode before starting experiment. You can start/restart these process using *./run_proxy.sh <path_to_DAS_HOME> 2 12* and *./run_dn_start.sh <path_to_DAS_HOME> 2 12*. The last two parameters are custom to this setup.\
