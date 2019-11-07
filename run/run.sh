@@ -11,7 +11,7 @@ hadoop namenode -format
 start-dfs.sh
 hadoop fs -mkdir /data
 ../scripts/./run_genDummyFiles.sh $path
-../scripts/./run_uploadHDFS.sh $fileCount
+../scripts/./run_uploadHDFS.sh $path
 ../scripts/./run_enable_storage_dstage.sh $path
 ../scripts/./run_enable_net_dstage.sh $path
 ../scripts/./run_proxy.sh $path
