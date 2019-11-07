@@ -9,7 +9,7 @@ fileCountConfig=($(sed -n '/^file_data_set/p' $expConfig))
 fileSize=${fileSizeConfig[1]}
 fileCount=${fileCountConfig[1]}
 blockSize=1000
-dataDir="/mnt/extra/data2"
+dataDir="/mnt/extra/data"
 
 echo $dataDir
 echo $scripts

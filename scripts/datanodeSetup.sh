@@ -6,7 +6,8 @@ clientsList="$home/CONFIG/clients.list"
 slavesList="$hadoopConfig/slaves"
 hdfsSites="$hadoopConfig/hdfs-site.xml"
 expConfigFile="$home/CONFIG/exp.conf"
-
+hdfsProxy="$home/HDFSProxy/config.txt"
+metaConfig="$home/METADATA/gen_meta_config.txt"
 
 echo $hadoopConfig
 
@@ -39,8 +40,11 @@ sudo cp $hadoopConfig/slaves /usr/local/hadoop/etc/hadoop/
 
 
 #setting up hadoopMaster
-sudo sed -i '/HadoopMaster/d' /etc/hosts > /dev/null
+sed -i '/HadoopMaster/d' /etc/hosts > /dev/null
 echo "$hadoopMaster HadoopMaster" >> /etc/hosts
+sed -i "s/nnIPAddr.*/nnIPAddr $hadoopMaster/" "$hdfsProxy"
+sed -i "s/nnIPAddr.*/nnIPAddr $hadoopMaster/" "$metaConfig"
+
 
 #creating hadoop Directories
 sudo mkdir -p /mnt/extra/hadoop_store/hdfs/namenode

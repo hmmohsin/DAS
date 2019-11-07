@@ -1,18 +1,15 @@
 #! /bin/bash
 
-fileCount=$1
-count=$(hadoop fs -ls /data/ | grep -c "F")
-if [[ $count -ge $fileCount ]]
-then
-	echo "Data files already exist. Skipping HDFS upload.."
-	echo $count
-	echo $fileCount
-	exit 0
-fi
+home=$1
+expConfig="$home/CONFIG/exp.conf"
+fileCountConfig=($(sed -n '/^file_data_set/p' $expConfig))
+fileCount=${fileCountConfig[1]}
+count=0
+hadoop fs -rm -r /data
 hadoop fs -mkdir /data
 nohup hadoop fs -put /mnt/extra/data/F* /data &
 while [[ $count -lt $fileCount ]]; do
-	sleep 5
+        sleep 5
         count=$(hadoop fs -ls /data | grep -c "F")
-	echo "Hang on!!  Still Working.."
+        echo "Hang on!!  Still Working.."
 done
