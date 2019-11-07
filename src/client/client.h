@@ -262,7 +262,7 @@ void *monitor(void *args);
 void *com_handler(void *args);
 void *job_manager(void *args);
 void loadGenerator(struct config*, struct exp_config);
-void configParser(struct config*, struct server*);
+int configParser(struct config*, struct server*);
 void job_loader(struct config*, struct job*, struct exp_config);
 void dispatcher (struct config*, struct job*, struct exp_config);
 int res_compiler (struct config*, struct job*, struct exp_config);

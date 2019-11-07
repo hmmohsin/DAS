@@ -55,3 +55,18 @@ void make_queue_obj(struct queue_data *q_data, int sock, int prio, int oid, int 
 	q_data->start_idx = st_idx;
 	q_data->size = size;
 }
+int get_mem_file_size()
+{
+	int job_size_token = rand()%100;
+	int job_size = 0;
+	do{
+		if (job_size_token < 93)
+			job_size = (rand()*1000000)%15000000;
+		else if (job_size_token < 96)
+			job_size = 15000000 + ((rand()*1000000)%49000000);
+		else
+			job_size = 64000000 + ((rand()*1000000)%236000000);
+	}while(job_size<0);
+	job_size = (job_size/1000)*1000;
+	return job_size;
+}

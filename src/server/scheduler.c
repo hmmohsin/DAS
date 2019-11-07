@@ -188,8 +188,10 @@ void* memory_worker(void* ptr){
 	
 	
 	int com_sock = j_data->sock;
-	int mem_file_size = g_config.mean_file_size;
-	int chunksize = g_config.chunksize;
+	int mem_file_size = 5000000;
+	//int mem_file_size = g_config.mean_file_size;
+	//int chunksize = g_config.chunksize;
+	int chunksize = 1000;
 	int tos, latency=0, object_size=0;	
 	int bytes_sent, total_bytes_sent=0;
 	char *data_buf = malloc(chunksize);
@@ -457,7 +459,7 @@ void* hdfs_worker(void* ptr)
 
 int get_noise_latency(int object_size)
 {
-	double latency_dist_ratio[] = {2, 2.3, 2.6, 2.8, 3.2, 4, 17};
+	double latency_dist_ratio[] = {2, 2.3, 2.6, 2.8, 3.2, 3.5, 8};
 	double latency = 0.0;
 	int delay = 0;
 	int ftt = g_config.noise;

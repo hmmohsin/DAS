@@ -46,7 +46,9 @@ int main(int argc, char* argv[])
 	g_curr_job_count_dec = 0;	
         create_queue(queue);
 	
-	configParser(g_config, server_list);
+	if (configParser(g_config, server_list) == -1){
+		exit(0);
+	}
 	bootstrap();
 	g_counter_stats = malloc(g_config->dn_count * sizeof(struct counters));	
 	if (g_counter_stats == NULL){

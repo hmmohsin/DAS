@@ -1,17 +1,11 @@
 #!/bin/bash
 
-if [ $# -ne 3 ]; then
-	print "Usage: ./run.sh start-id end-id"
-else
-	path=$1"/scripts"
-	sid=$2
-	lid=$3
-	echo $path
-	while [ $sid -le $lid ]; do
-		ip="10.1.1."$sid
-		echo $ip
-		ssh -o StrictHostKeyChecking=no -n -f $ip "cd $path; ./dn_start.sh $path -s $ip -i $sid"
-		
-		let sid=sid+1
-	done
-fi
+home=$1
+serversList="$home/CONFIG/servers.list"
+scripts="$home/scripts"
+while IFS= read -r line
+do
+        lineVar=($line)
+        ip=${lineVar[1]}
+	ssh -o StrictHostKeyChecking=no -n -f $ip "cd $scripts; ./dn_start.sh $home -s $ip -i $sid"
+done < "$serversList"

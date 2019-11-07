@@ -90,8 +90,7 @@ void* server(void *param_ptr)
 
 	while(1){
 		
-		event_count = epoll_wait(epoll_fd[server_class], 
-					events_buff, MAXEPOLLEVENTS, -1);
+		event_count = epoll_wait(epoll_fd[server_class], events_buff, MAXEPOLLEVENTS, -1);
 		if (DEBUG && event_count == -1){
 			
 			syslog(LOG_INFO, "Info: epoll_wait returned -1. errno %d\n",errno);

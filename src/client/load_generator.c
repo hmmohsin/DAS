@@ -55,7 +55,6 @@ void loadGenerator(struct config *g_config, struct exp_config e_config)
 	for (idx=0; idx < g_config->load_count; idx++){
                 
 		memset(load_filename, 0, 50);
-
 		sprintf(load_filename, "%sload_%d", LOADDIR, e_config.load);
 
 		fp = fopen(load_filename,"w+");
@@ -76,7 +75,6 @@ void loadGenerator(struct config *g_config, struct exp_config e_config)
         	{
 
 			memset(tasks_list, 0, 500);
-
                 	job_id=itr;
 			
 			if (g_config->tasks_per_job == 0){

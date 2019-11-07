@@ -185,6 +185,8 @@ int dans_com_handler(int com_sock, int priority)
 			}
 			else if(strcmp(g_config.sched_mode, "memory") == 0){
 				
+				filesize = 5000000;
+				//filesize = get_mem_file_size();
 				make_queue_obj(&q_data, com_sock, msg_hdr->prio,
 						msg_hdr->object_id, msg_hdr->start_idx,
 									filesize);

@@ -6,7 +6,7 @@
 # include "client.h"
 
 
-void configParser(struct config *g_config, struct server *server_list)
+int configParser(struct config *g_config, struct server *server_list)
 {
         FILE *fp = NULL;
         char tuple[512] = {0};
@@ -113,18 +113,20 @@ void configParser(struct config *g_config, struct server *server_list)
 
                 count++;
                 if(count > g_config->dn_count) {
-                        printf("Warning:: Inconsistent Configuration files."
-                                "Server list has more servers than dn_count."
-                                "Omitting additional servers information.\n");
-                        break;
+                        printf("Error: Inconsistent Configuration files."
+                                "Server list does not match dn_count=%d.\n",
+				g_config->dn_count);
+                        return -1;
                 }
         }
-        if(count > g_config->dn_count) {
-                printf("Warning:: Inconsistent Configuration files."
-                        "Server list has missing servers information."
-                        "Considering %d servers.\n", g_config->dn_count);
-        }
+        if(count != g_config->dn_count) {
+                printf("Error: Inconsistent Configuration files."
+                        "Server list does not match dn_count=%d.\n",
+			g_config->dn_count);
+        	return -1;
+	}
         fclose(fp);
+	return 0;
 }
 int get_data_array(char tuple[], int *array, int max_array_size)
 {

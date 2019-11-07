@@ -173,4 +173,5 @@ void* memory_worker(void* ptr);
 void* qmon(void* ptr);
 void* sockmon(void* ptr);
 void* disk_scheduler(void* ptr);
+int get_mem_file_size();
 void* noise_generator(void* args);

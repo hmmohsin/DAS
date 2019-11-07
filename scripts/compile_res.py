@@ -167,6 +167,15 @@ for load in exp_config.loads:
 					if scheme_name == "Single_Copy":			
 						tFTT = priFTT
 						priCount = priCount + 1
+					elif scheme_name == "Cloning-Prio":
+						tFTT = max(priFTT,secFTT)
+						priCount = priCount + 1
+						secCount = secCount + 1
+					elif scheme_name == "Cloning":
+						tFTT = max(priFTT,secFTT)
+                                                priCount = priCount + 1
+                                                secCount = secCount + 1
+
 					elif (priBytesTrans == filesize) & (priFTT < secFTT):
 						#print str(tPData) + "Pri transfered"
 						tFTT = priFTT

@@ -81,7 +81,7 @@ if __name__ == "__main__":
 		
 		metaFile = config['metaFile']
 		fh = open(metaFile,'w')
-		for i in range(0,5000):
+		for i in range(0,20000):
 			if server_count == 1:
 				pri = 0
 				sec = 0
@@ -94,6 +94,6 @@ if __name__ == "__main__":
 				ter = pri
 				while ter == pri or ter == sec:
 					ter = random.randint(0,server_count-1)
-			metaInfo = str(i) + " " + str(pri) + " " +str(sec) + " " + str(ter)+ "\n"
+			metaInfo = str(i) + " 0 " + str(pri) + " " +str(sec) + " " + str(ter)+ "\n"
 			fh.write(metaInfo)
 		fh.close()

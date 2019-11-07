@@ -6,6 +6,6 @@ then
 fi
 
 sudo sed -i '/Hadoop/d' /etc/hosts > /dev/null
-sudo rm -rf /mnt/extra/*
+sudo rm -rf /mnt/extra/hadoop*
 sudo mkdir -p /mnt/extra/hadoop_store/hdfs/namenode
 sudo mkdir -p /mnt/extra/hadoop_store/hdfs/datanode
