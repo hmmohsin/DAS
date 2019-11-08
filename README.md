@@ -28,6 +28,9 @@ To get results summary you can use *compile_res.py* script under *scripts* dir. 
 *Scheme RCT-std RCT-mean RCT-median RCT-p90 RCT-p95 RCT-p99 RCT-P99.9 RCT-Max*\
 In our paper we have only reported p99 for our main experiment.
 
+------
+
+##Customizing Configuration
 
 ### Emulab-Setup-Configuration
 You can modify emulab.ns file to provision desired number and types of nodes as to meet your requirements as follow:\
