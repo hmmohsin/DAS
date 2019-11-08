@@ -11,5 +11,5 @@ nohup hadoop fs -put /mnt/extra/data/F* /data &
 while [[ $count -lt $fileCount ]]; do
         sleep 5
         count=$(hadoop fs -ls /data | grep -c "F")
-        echo "Hang on!!  Still Working.."
+        echo "Hang on!!  Uploading data to hadoop cluster.."
 done

@@ -21,7 +21,7 @@ By default all the machines will be connected with cluster via 1 Gbps link. We r
 Each server has 100GB storage block-store attached. For d430, and d710, this limit can be increased upto 1000GB.\
 
 
-## Emulab Setup
+## Emulab Setup with default configuration
 1- Login to your [emulab account](https://www.emulab.net).\
 2- From top left of the page, click on *Experiments* and choose *Emulab Classic* from the drop down list.\
 3- Click *Experimentation* and choose *Begin an Experiment*.\
@@ -31,8 +31,16 @@ Each server has 100GB storage block-store attached. For d430, and d710, this lim
 7- Clone DAS code *git clone https://github.com/hmmohsin/DAS.git* under your emulab home directory (e.g. /users/peter/)\
 8- *cd DAS* and *make*\
 9- *cd run && ./run.sh* This script will setup hadoop cluster, generate dummy data files and upload that data into hdfs cluster. With defualt settings the script will generate 1000 files of 1MB each. This step may take upto 10 minutes. To change the number of files or size of files, check the *Experiment-Configuration* section.\
-10- *cd ../METADATA && python gen_metaFile.py hdfs* This will fetch files metadata from HDFS namenode to local node, bypassing the need to contact namenode for each get request.
+10- *cd ../METADATA && python gen_metaFile.py hdfs* This will fetch files metadata from HDFS namenode to local node, bypassing the need to contact namenode for each get request.\
 
+------
+## Running the Experiment with default configuration.
+change current directory to bin and run the client. client takes client ID as input. 
+
+*cd ../bin && ./client 1*
+
+## Running experiment with different configuration.
+To change the configuration, use the following guide. After changing configuration, change current directory to *run* and issue *./run.sh*. Once the setup is complete, *cd ../bin && ./client 1*.\
 
 ### Experiment-Configuration
 To evaluate different duplication schemes under different settings, *CONFIG* directory contains *exp.conf* file which provides various configuration parameters. Most of these parameters take an integer input. The following config are some of the parameters supported to cover a range of experiments:\

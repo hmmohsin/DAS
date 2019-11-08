@@ -28,5 +28,5 @@ nohup python genDummyFiles.py $blockSize $fileSize  0 $fileCount $dataDir &
 while [ $count -ne $fileCount ]; do
 	sleep 40
         count=$(ls -la $dataDir | grep -c "F")
-	echo "Hang on!!  Still Working.."
+	echo "Hang on!!  generating dummy data files.."
 done
