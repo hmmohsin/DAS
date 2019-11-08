@@ -8,7 +8,7 @@ set lanstr ""
 for {set i 1} {$i <= $maxServers} {incr i} {
 	set S($i) [$ns node]
   	append lanstr "$S($i) "
-        tb-set-node-os $S($i) HM-Hadoop-Single
+        tb-set-node-os $S($i) TuftsCC/HM-Hadoop-Single
 	tb-set-hardware $S($i) pc3000
 
 	set sbs($i) [$ns blockstore]
@@ -22,7 +22,7 @@ for {set i 1} {$i <= $maxServers} {incr i} {
 for {set i 1} {$i <= $maxClients} {incr i} {
 	set C($i) [$ns node]
   	append lanstr "$C($i) "
-	tb-set-node-os $C($i) HM-Hadoop-Single
+	tb-set-node-os $C($i) TuftsCC/HM-Hadoop-Single
         tb-set-hardware $C($i) pc3000
 
 	set cbs($i) [$ns blockstore]
