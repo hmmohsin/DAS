@@ -10,13 +10,14 @@ This repository contain DAS code for storage experiment. For now you need to hav
 7- Clone DAS code *git clone https://github.com/hmmohsin/DAS.git* under your emulab home directory (e.g. /users/peter/)\
 8- *cd DAS* and *make*\
 9- *cd run && ./run.sh* This script will setup hadoop cluster, generate dummy data files and upload these data files into hdfs cluster. With defualt settings the script will generate 100 files of 1MB each. This step may take upto 10 minutes. To change the number of files or size of files, check the *Experiment-Configuration* section.\
-10- *cd ../METADATA && python gen_metaFile.py hdfs* This will fetch files metadata from HDFS namenode to local node, bypassing the need to contact namenode for each get request.\
+10- *cd ../METADATA && python gen_metaFile.py hdfs* This will fetch files metadata from HDFS namenode to local node, bypassing the need to contact namenode for each get request.
 
 ------
-## Running the experiment with default configuration.
-change current directory to bin and run the client. Client takes client ID as input.\
-*cd ../bin && ./client 1*
+## Running the experiment with default configuration
+change current directory to bin and run the client. *cd ../bin && ./client 1*
+
 ------
+
 ## Compiling Results
 RESULTS/RES Directory contains all the result files for each run of every experiment. The filenames are structured based on exp.conf file as *eid_scheme_pLoad_run_cli_client-id*. For example from the sample config file, the DAS result filename will be *default_test_DAS_10_0_cli-1*.\
 \
