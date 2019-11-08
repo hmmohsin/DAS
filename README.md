@@ -1,11 +1,10 @@
 This repository contain DAS code for storage experiment. For now you need to have an emulab accoun to run this code.
 
-
 ## Emulab Setup with default configuration
 1- Login to your [emulab account](https://www.emulab.net).\
 2- From top left of the page, click on *Experiments* and choose *Emulab Classic* from the drop down list.\
 3- Click *Experimentation* and choose *Begin an Experiment*.\
-4- Fill the required fields, create a local copy of *https://github.com/hmmohsin/DAS/blob/master/scripts/emulab.ns*, upload the local .ns file, and click on *submit*. The swap-in will take few minutes. If swapin fails because of resource availability, Follow the *Emulab-Setup-Configuration* discussed below to modify number and/or type of nodes and try swapping in again.\
+4- Fill the required fields, create a local copy of *https://github.com/hmmohsin/DAS/blob/master/scripts/emulab.ns*, upload the local .ns file, and click on *submit*. The swap-in process will take few minutes. If swapin fails because of resource availability, Follow the *Emulab-Setup-Configuration* discussed below to modify number and/or type of nodes and try swapping in again.\
 5- Once the experiment is successfully swapped-in, an email will be sent to you containing *Qualified Names* against all the nodes. Use Qualified name against C-1 to SSH the node. Note. accessing emulab node require [setting up ssh keys](https://wiki.emulab.net/wiki/kb70).\
 6- Change user to root *sudo su root*.\
 7- Clone DAS code *git clone https://github.com/hmmohsin/DAS.git* under your emulab home directory (e.g. /users/peter/)\
@@ -15,8 +14,7 @@ This repository contain DAS code for storage experiment. For now you need to hav
 
 ------
 ## Running the experiment with default configuration.
-change current directory to bin and run the client. client takes client ID as input. 
-
+change current directory to bin and run the client. Client takes client ID as input.\
 *cd ../bin && ./client 1*
 ------
 ## Compiling Results
@@ -49,7 +47,6 @@ By default all the machines will be connected with cluster via 1 Gbps link. We r
 \
 **Storage Capacities:**
 Each server has 100GB storage block-store attached. For d430, and d710, this limit can be increased upto 1000GB.\
-
 
 
 ### Experiment-Configuration

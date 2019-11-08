@@ -16,3 +16,4 @@ hadoop fs -mkdir /data
 ../scripts/./run_enable_net_dstage.sh $path
 ../scripts/./run_proxy.sh $path
 ../scripts/./run_dn_start.sh $path
+printf "\n=========================================\nSetup finished. Press Enter to continue!!\n"
