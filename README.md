@@ -9,7 +9,7 @@ This repository contain DAS code for storage experiment. For now you need to hav
 6- Change user to root *sudo su root*.\
 7- Clone DAS code *git clone https://github.com/hmmohsin/DAS.git* under your emulab home directory (e.g. /users/peter/)\
 8- *cd DAS* and *make*\
-9- *cd run && ./run.sh* This script will setup hadoop cluster, generate dummy data files and upload these data files into hdfs cluster. With defualt settings the script will generate 100 files of 1MB each. This step may take upto 10 minutes. To change the number of files or size of files, check the *Experiment-Configuration* section.\
+9- *cd run && ./run.sh* This script will setup hadoop cluster, generate dummy data files and upload these data files into hdfs cluster. With defualt settings the script will generate 100 files of 1MB each. This step may take upto 10 minutes. To change the number of files or size of files, check the *Experiment-Configuration* section. Please ignore error messages and warnings and wait for the final message: *Setup finished. Press Enter to continue!!*\
 10- *cd ../METADATA && python gen_metaFile.py hdfs* This will fetch files metadata from HDFS namenode to local node, bypassing the need to contact namenode for each get request.
 
 ------
