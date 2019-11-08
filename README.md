@@ -19,7 +19,7 @@ By default all the machines will be connected with cluster via 1 Gbps link. We r
 \
 **Storage Capacities:**
 Each server has 100GB storage block-store attached. For d430, and d710, this limit can be increased upto 1000GB.\
-\
+
 
 ## Emulab Setup
 1- Login to your [emulab account](https://www.emulab.net).\
@@ -38,10 +38,10 @@ Each server has 100GB storage block-store attached. For d430, and d710, this lim
 To evaluate different duplication schemes under different settings, *CONFIG* directory contains *exp.conf* file which provides various configuration parameters. Most of these parameters take an integer input. The following config are some of the parameters supported to cover a range of experiments:\
 \
 **dn_count:[number of datanodes]**\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Specifies the total number of datanodes in Hadoop cluster. For section 6.1 in paper, this number is set to 9.\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Specifies the total number of datanodes in Hadoop cluster. Once you choose the number of datanodes, you need to specify datanode information in *servers.list* under *CONFIG* directory. For each datanode you are required to provide *ID IPAddress Pri-Port Sec-Port*; where ID is a unique identifier. We recommend keeping the Pri-Port and Sec-Port to 5010 and 5011 respectively. The IP Addresses of datanodes (servers) can be checked from emulab interface by clicking on the node. For our setup, the datanode (server) identifiers are S-1, S-2 and so on and their respective local IP Addresses are 10.1.1.2, 10.1.1.3 and so on.\
 \
 **cli_count:[number of clients]**\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total number of clients generating get requests. For section 6.1 in paper, this value is set to 1.\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total number of clients generating get requests. Similar to previous step, you will need to speicify client's information in *clients.list* under CONFIG dir. For now we have added support for single client. However, you may need to change client IP. You can check the local ip address of client by logging into C-1. For default configuration the client IP Address is 10.1.1.5 and you don't need to change it.\
 \
 **btlnk_bw:[Avg Bottleneck BW]**\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Avg bottleneck bandwidth is used in load calculation. For the scope of paper, the bottleneck can either be network or Disk. For disk, we benchmarked avg random read throughput offline. For d430 type nodes on emulab, the avh throughput is 40MBps.\
